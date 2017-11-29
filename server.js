@@ -128,6 +128,9 @@ app.get('/boards', (req, res)=>{
                }
           });
           res.json(boards);
+     })
+     .catch(err => {
+          res.sendStatus(500);
      });
 });
 
@@ -144,14 +147,13 @@ app.get('/search', (req, res)=>{
      })
      .fetchAll({withRelated: ['user', 'comments']})
      .then(posts => {
-          console.log(posts)
           const output = {
                posts: formatPostObj(posts),
           }
           res.json(output);
      })
      .catch(err => {
-          console.log(err);
+          res.sendStatus(500);
      })
 });
 
@@ -225,7 +227,7 @@ app.put('/posts/:id', authorize, (req, res)=>{
           res.json(updatedPost);
      })
      .catch(err => {
-          res.sendStatus(403);
+          res.sendStatus(500);
      });
 });
 
@@ -240,7 +242,7 @@ app.delete('/posts/:id', authorize, (req, res)=>{
           res.send('deleted');
      })
      .catch(err => {
-          res.status(500).send('something went wrong');
+          res.sendStatus(500);
      });
 });
 
@@ -340,7 +342,7 @@ app.put('/comments/:id', authorize, (req, res)=>{
           res.json(updatedComment);
      })
      .catch(err => {
-          res.sendStatus(403);
+          res.sendStatus(500);
      });
 });
 
@@ -355,7 +357,7 @@ app.delete('/comments/:id', authorize, (req, res)=>{
           res.send('deleted');
      })
      .catch(err => {
-          res.status(500).send('something went wrong');
+          res.sendStatus(500);
      });
 });
 
@@ -390,7 +392,7 @@ app.post('/register', (req, res)=>{
                     });
                })
                .catch(err =>{
-                    res.sendStatus(500);
+                    res.sendStatus(400);
                })
           })
      })
@@ -461,7 +463,7 @@ app.post('/follow/:id', authorize, (req, res)=>{
           res.json(savedFollow);
      })
      .catch(err => {
-          res.status(500).send('something went wrong');
+          res.sendStatus(500);
      });
 });
 
@@ -476,7 +478,7 @@ app.delete('/follow/:id', authorize, (req, res)=>{
           res.send('deleted');
      })
      .catch(err => {
-          res.status(500).send('something went wrong');
+          res.sendStatus(500);
      });
 });
 
