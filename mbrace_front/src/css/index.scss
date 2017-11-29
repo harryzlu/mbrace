@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Oxygen:400,700');
+
 $heading--margin: 5rem 0 2rem 0;
 $max--width: 48rem;
 $default-font--color: rgba(0, 0, 0, 0.87);
@@ -6,7 +8,7 @@ $item--color: #FFFFCC;
 body {
      margin: 0;
      padding: 0 0 2rem 0;
-     font-family: "Roboto", Helvetica, sans-serif;
+     font-family: "Oxygen", sans-serif;
      font-size: 16px;
      text-align: center;
 }

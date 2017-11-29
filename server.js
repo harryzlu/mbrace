@@ -12,6 +12,13 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
+const path = require('path');
+app.use( express.static(path.resolve(__dirname, './mbrace_front/build')));
+
+app.get('*', (req, res) => {
+     res.sendFile(path.resolve(__dirname, './mbrace_front/build', 'index.html'));
+});
+
 const knex = require('knex')({
      client: 'postgres',
      connection: {
@@ -136,6 +143,7 @@ app.get('/boards', (req, res)=>{
 
 // search for posts matching a query string with the author and the number of comments in each, sorted by latest first
 app.get('/search', (req, res)=>{
+     res.send('testing')
      const queries = req.query.text.split(' ');
      Post.query(qb => {
           queries.forEach(qTerm => {
