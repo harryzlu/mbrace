@@ -13,11 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 const path = require('path');
-app.use( express.static(path.resolve(__dirname, './mbrace_front/build')));
-
-app.get('*', (req, res) => {
-     res.sendFile(path.resolve(__dirname, './mbrace_front/build', 'index.html'));
-});
+app.use( express.static(path.resolve(__dirname+ '/mbrace_front/build')));
 
 const knex = require('knex')({
      client: 'postgres',
@@ -490,65 +486,10 @@ app.delete('/follow/:id', authorize, (req, res)=>{
      });
 });
 
+app.get('*', (req, res) => {
+     res.sendFile(path.resolve(__dirname, './mbrace_front/build/index.html'));
+});
+
 app.listen(PORT, () => {
      console.log('server listening on port', PORT);
 });
-
-// testing relationships
-
-// let userId, boardId, postId;
-// new User({
-//      username: 'harryzlu',
-//      password: 'abc123'
-// })
-// .save()
-// .then(savedUser => {
-//      console.log(savedUser.attributes)
-//      userId = savedUser.attributes.id;
-//      return new Board({
-//           name: 'Depression'
-//      })
-//      .save();
-// })
-// .then(savedBoard => {
-//      console.log(savedBoard.attributes);
-//      boardId = savedBoard.attributes.id;
-//      return new Post({
-//           title: 'Why am I sad?',
-//           text: ':(',
-//           board_id: savedBoard.attributes.id,
-//           user_id : userId,
-//      })
-//      .save();
-// })
-// .then(savedPost => {
-//      console.log(savedPost.attributes);
-//      postId = savedPost.attributes.id;
-//      return new PostComment({
-//           text: 'aww :(',
-//           post_id: savedPost.attributes.id,
-//           user_id : userId,
-//      })
-//      .save();
-// })
-// .then(savedComment => {
-//      console.log(savedComment.attributes);
-//      return new Follow({
-//           post_id: postId,
-//           user_id: userId
-//      })
-// })
-// .then(savedFollow => {
-//      console.log(savedFollow.attributes);
-//      return new User({id: userId}).destroy();
-// })
-// .then(result => {
-//      console.log(result);
-//      return new Board({id: boardId}).destroy();
-// })
-// .then(result => {
-//      console.log(result);
-// })
-// .catch(error => {
-//      console.log(error);
-// });

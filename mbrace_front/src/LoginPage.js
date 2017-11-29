@@ -28,7 +28,7 @@ class LoginPage extends Component{
                username: this.state.username,
                password: this.state.password,
           }
-          axios.post('http://localhost:' + PORT + '/login', loginBody)
+          axios.post('/login', loginBody)
           .then(response => {
                localStorage.setItem('user_id', response.data.user_id);
                localStorage.setItem('username', response.data.username);
