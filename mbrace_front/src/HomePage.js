@@ -14,8 +14,7 @@ class HomePage extends Component{
      }
 
      componentWillMount(){
-          console.log('run');
-          axios.get('http://localhost:' + PORT + '/boards')
+          axios.get('/boards')
           .then(boards => {
                this.setState({
                     boards: boards.data,

@@ -34,7 +34,7 @@ class PostPage extends Component{
      }
 
      followPost(){
-          axios.post('http://localhost:' + PORT + '/follow/' + this.state.id, {
+          axios.post('/follow/' + this.state.id, {
                user_id: this.props.loggedInId,
           },
           {
@@ -54,7 +54,7 @@ class PostPage extends Component{
      }
 
      unfollowPost(){
-          axios.delete('http://localhost:' + PORT + '/follow/' + this.state.id,
+          axios.delete('/follow/' + this.state.id,
           {
                headers: {
                     'authorization': this.props.getToken(),
@@ -77,7 +77,7 @@ class PostPage extends Component{
      editPost(e){
           e.preventDefault();
           const text = e.target["text"].value
-          axios.put('http://localhost:' + PORT + '/posts/' + this.state.id, {
+          axios.put('/posts/' + this.state.id, {
                text: text,
                user_id: this.props.loggedInId,
           },
@@ -98,7 +98,7 @@ class PostPage extends Component{
      }
 
      deletePost(){
-          axios.delete('http://localhost:' + PORT + '/posts/' + this.state.id, {
+          axios.delete('/posts/' + this.state.id, {
                headers: {
                     'authorization': this.props.getToken(),
                },
@@ -131,7 +131,7 @@ class PostPage extends Component{
 
      addComment(e){
           e.preventDefault();
-          axios.post('http://localhost:' + PORT + '/posts/' + this.state.id, {
+          axios.post('/posts/' + this.state.id, {
                text: this.state.formText,
                user_id: this.props.loggedInId,
                username: this.props.loggedInUser,
@@ -161,7 +161,7 @@ class PostPage extends Component{
      editComment(e, id){
           e.preventDefault();
           const text = e.target["text"].value
-          axios.put('http://localhost:' + PORT + '/comments/' + id, {
+          axios.put('/comments/' + id, {
                text: text,
                user_id: this.props.loggedInId,
           },
@@ -184,7 +184,7 @@ class PostPage extends Component{
      }
 
      deleteComment(id){
-          axios.delete('http://localhost:' + PORT + '/comments/' + id, {
+          axios.delete('/comments/' + id, {
                headers: {
                     'authorization': this.props.getToken(),
                },
@@ -204,7 +204,7 @@ class PostPage extends Component{
      }
 
      componentWillMount(){
-          axios.get('http://localhost:' + PORT + '/posts/' + this.props.match.params.postId)
+          axios.get('/posts/' + this.props.match.params.postId)
           .then(post => {
                this.setState({
                     id: post.data.id,

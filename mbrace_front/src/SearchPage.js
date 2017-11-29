@@ -17,7 +17,7 @@ class SearchPage extends Component{
      searchPosts(e){
           e.preventDefault();
           const queryStr = this.queryStr.value.split(' ').join('+');
-          axios.get('http://localhost:' + PORT + '/search?text=' + queryStr)
+          axios.get('/search?text=' + queryStr)
           .then(response => {
                this.setState({
                     posts: response.data.posts,
