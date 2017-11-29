@@ -1,5 +1,5 @@
 {
-  "name": "MBrace - Welcome. How can we help today?",
+  "name": "mbrace",
   "version": "1.0.0",
   "description": "A message board for open discussion about mental health.",
   "main": "index.js",
