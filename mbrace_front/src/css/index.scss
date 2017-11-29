@@ -1,0 +1,125 @@
+$heading--margin: 5rem 0 2rem 0;
+$max--width: 48rem;
+$default-font--color: rgba(0, 0, 0, 0.87);
+$item--color: #FFFFCC;
+
+body {
+     margin: 0;
+     padding: 0 0 2rem 0;
+     font-family: "Roboto", Helvetica, sans-serif;
+     font-size: 16px;
+     text-align: center;
+}
+
+nav .brand-logo.right {
+     right: 1rem;
+}
+
+h2 {
+     margin: $heading--margin;
+}
+
+a {
+     color: $default-font--color;
+}
+
+form {
+     @extend .side-auto-margin;
+     max-width: $max--width;
+     padding: 2rem;
+}
+
+button {
+     margin-left: 1rem;
+     margin-right: 1rem;
+}
+
+.side-auto-margin {
+     margin-left: auto;
+     margin-right: auto;
+}
+
+.caption--margin {
+     margin-bottom: 3rem;
+}
+
+.card {
+     text-align: left;
+}
+
+// home page
+
+.board--container {
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: space-around;
+     @extend .side-auto-margin;
+     max-width: $max--width;
+
+     .board--card {
+          width: 18rem;
+          height: 18rem;
+          border-radius: 50%;
+          background-color: $item--color;
+          text-align: center;
+
+          .card-content{
+               height: 100%;
+               display: flex;
+               justify-content: center;
+               align-items: center;
+          }
+     }
+}
+
+// board page
+
+.post--container {
+     margin: 3rem 0;
+
+     .post--card {
+          max-width: $max--width;
+          @extend .side-auto-margin;
+          margin-top: 2rem;
+          background-color: $item--color;
+     }
+}
+
+.post-details {
+     font-size: 0.8rem;
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: space-between;
+     p {
+          margin: 0;
+     }
+}
+
+// post page
+
+.post--header {
+     margin-top: 5rem;
+     margin-bottom: 2rem;
+     max-width: $max--width;
+     @extend .side-auto-margin;
+     background-color: lightblue;
+}
+
+.comment--container {
+     margin: 3rem 0;
+
+     .comment--card {
+          background-color: $item--color;
+          margin-top: 2rem;
+          max-width: $max--width;
+          @extend .side-auto-margin;
+     }
+}
+
+.comment-details {
+     @extend .post-details;
+}
+
+.modal {
+     padding: 1rem;
+}

@@ -1,0 +1,22 @@
+{
+  "name": "MBrace - Welcome. How can we help today?",
+  "version": "1.0.0",
+  "description": "A message board for open discussion about mental health.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Harry Lu",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^1.0.3",
+    "bookshelf": "^0.11.1",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "jsonwebtoken": "^8.1.0",
+    "knex": "^0.14.1",
+    "moment": "^2.19.2",
+    "pg": "^7.4.0"
+  }
+}
