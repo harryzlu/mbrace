@@ -2,6 +2,8 @@ const express = require('express'),
      app = express(),
      PORT = process.env.PORT || 8080;
 
+console.log(process.env);
+
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const secretKey = 'bswdftfall2017';
@@ -13,10 +15,10 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 const path = require('path');
-app.use( express.static(path.resolve(__dirname, './mbrace_front/build')));
+app.use( express.static(__dirname+'/mbrace_front/build'));
 
 app.get('*', (req, res) => {
-     res.sendFile(path.resolve(__dirname, './mbrace_front/build', 'index.html'));
+     res.sendFile(__dirname+'/mbrace_front/build/index.html');
 });
 
 const knex = require('knex')({
