@@ -3,7 +3,6 @@ import {Button} from 'react-materialize';
 import PostCard from './PostCard';
 
 const axios = require('axios');
-const PORT = process.env.PORT || 8080;
 
 class SearchPage extends Component{
      constructor(){
@@ -30,10 +29,11 @@ class SearchPage extends Component{
 
      render(){
           const postCards = this.state.posts.map(post =>
-               <PostCard details={post}/>)
+               <PostCard key={post.id}
+                    details={post}/>)
           return(
                <div>
-                    <h2>Search</h2>
+                    <h1 className="heading">Search</h1>
                     <form className="form-style" onSubmit={this.searchPosts}>
                          <input required
                               type="text"

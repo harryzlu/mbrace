@@ -61,15 +61,16 @@ class App extends Component {
                ];
           return (
                <div>
-                    <Navbar className="navbar--color" brand={<Link to='/'>MBrace</Link>} left>
+                    <Navbar className="navbar--color" brand="MBrace" right>
                          <div className="nav-wrapper">
                               <ul>
-                                   {navButtons}
+                                   <li key="home"><Link to='/'>Home</Link></li>
                                    <li key="search"><Link to='/search'>Search</Link></li>
+                                   {navButtons}
                               </ul>
                          </div>
                     </Navbar>
-                    <Switch>
+                    <div className="pages"><Switch>
                          <Route exact path="/" render={()=><HomePage/>}/>
                          <Route path="/boards/:boardId" render={({match})=><BoardPage
                               match={match}
@@ -97,7 +98,7 @@ class App extends Component {
                               match={match}
                          />}/>
                          <Route path="/search" render={()=><SearchPage/>}/>
-                    </Switch>
+                    </Switch></div>
                </div>
           );
      }

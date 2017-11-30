@@ -1,49 +1,91 @@
 @import url('https://fonts.googleapis.com/css?family=Oxygen:400,700');
 
-$heading--margin: 5rem auto 2rem auto;
+$heading--margin: 3rem auto 1.5rem auto;
 $max--width: 55rem;
 $card--width: 32rem;
 $default-font--color: #383E47;
 $alt-text--color: #3669D4;
 $alt-hover--color: #5796FF;
 $item--color: #E8F1FC;
-$background--color: #FFF8FA;
-$comment--color: #FFEFCB;
+$item--color-transparent: rgba(232, 241, 252, 0.7);
+$background--color: rgba(255, 248, 250, 0.7);
+$comment--color: white;
 $transition-speed: color .3s ease;
 
 body {
      margin: 0;
-     padding: 0 0 2rem 0;
-     background-color: $background--color;
+     padding-bottom: 8rem;
+     background: url('/bg.jpg') no-repeat center fixed;
      font-family: "Oxygen", sans-serif;
      font-size: 16px;
      color: $default-font--color;
      text-align: center;
+     z-index: 0;
+}
+
+.pages {
+     position: relative;
+     padding: 1rem 1rem 1.5rem 1rem;
+     @extend .side-auto-margin;
+     width: 80%;
+     max-width: $max--width;
+     background-color: $background--color;
+     transform: translateY(4rem);
+     *{
+          animation: fade-entrance 0.5s ease-in-out;
+     }
+
+}
+
+@keyframes fade-entrance {
+     from {
+          opacity: 0;
+          transform: translateY(1rem);
+     }
+     to {
+          opacity: 1;
+          transform: none;
+     }
 }
 
 nav {
-     background-color: $item--color;
+     background-color: $item--color-transparent;
      ul a{
+          font-weight: bold;
           color: $alt-text--color;
-     }
-     .brand-logo.right {
-          right: 1rem;
-          a {
+          &:hover {
                color: $default-font--color;
-               font-weight: bold;
           }
      }
-     .material-icons {
-          color: $background--color;
+
+     .brand-logo {
+          left: 1rem;
+          color: $alt-text--color;
+          font-weight: bold;
           &:hover {
-               color: $alt-text--color;
+               color: $default-font--color;
+               transition: $transition-speed;
+          }
+          @media only screen and (max-width: 992px) {
+               left: 50%;
+               transform: translateX(-50%);
+          }
+     }
+
+     .material-icons {
+          color: $alt-text--color;
+          &:hover {
+               color: $default-font--color;
                transition: $transition-speed;
           }
      }
 }
 
-h2 {
-     max-width: $card--width;
+.heading {
+     font-size: 2.5rem;
+     line-height: 3rem;
+     max-width: 20rem;
+     width: 80%;
      margin: $heading--margin;
      font-weight: bold;
 }
@@ -60,7 +102,7 @@ a {
 .form-style {
      @extend .side-auto-margin;
      max-width: $max--width;
-     padding: 2rem;
+     padding: 3rem;
      input:focus:not([readonly]) {
           border-bottom: 1px solid $alt-text--color;
           box-shadow: 0 1px 0 0 $alt-text--color;
@@ -87,8 +129,10 @@ a {
      margin-right: auto;
 }
 
-.caption--margin {
+.caption {
      margin-bottom: 3rem;
+     width: 80%;
+     @extend .side-auto-margin;
 }
 
 .card {
@@ -130,8 +174,8 @@ a {
      max-width: $max--width;
 
      .board--card {
-          width: 15rem;
-          height: 15rem;
+          width: 13rem;
+          height: 13rem;
           border-radius: 50%;
           background-color: $item--color;
           text-align: center;
@@ -164,9 +208,29 @@ a {
 
      .post--card {
           max-width: $card--width;
+          width: 80%;
           @extend .side-auto-margin;
           margin-top: 2rem;
-          background-color: $item--color;
+          background-color: transparent;
+          box-shadow: none;
+
+          .card-content {
+               $c: &;
+               background-color: $item--color;
+               box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+               margin-bottom: 0.1rem;
+               padding-top: 1.3rem;
+               padding-bottom: 1.3rem;
+          }
+
+          .card-action {
+               padding-top: 0.3rem;
+               padding-bottom: 0;
+          }
+
+          .post--title {
+               font-weight: bold;
+          }
      }
 }
 
@@ -176,7 +240,7 @@ a {
      flex-wrap: wrap;
      justify-content: space-between;
      text-transform: none;
-     color: rgba(160,160,160,0.9);
+     color: rgba(100,100,100,0.9);
      p {
           margin: 0;
      }
@@ -188,6 +252,7 @@ a {
      margin-top: 5rem;
      margin-bottom: 2rem;
      max-width: $card--width;
+     width: 80%;
      @extend .side-auto-margin;
      background-color: $item--color;
 }
@@ -196,10 +261,25 @@ a {
      margin: 3rem 0;
 
      .comment--card {
-          background-color: $comment--color;
+          background-color: transparent;
           margin-top: 2rem;
           max-width: $card--width;
+          width: 80%;
           @extend .side-auto-margin;
+          box-shadow: none;
+
+          .card-content {
+               background-color: $comment--color;
+               box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+               margin-bottom: 0.1rem;
+               padding-top: 1.3rem;
+               padding-bottom: 1.3rem;
+          }
+
+          .card-action {
+               padding-top: 0.7rem;
+               padding-bottom: 0;
+          }
 
           .comment-details {
                @extend .post-details;
@@ -213,4 +293,10 @@ a {
 
 .modal {
      padding: 1rem;
+}
+
+.return-button {
+     position: absolute;
+     top: 1.5rem;
+     left: 1rem;
 }

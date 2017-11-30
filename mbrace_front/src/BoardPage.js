@@ -3,7 +3,6 @@ import {Button} from 'react-materialize';
 import PostCard from './PostCard';
 
 const axios = require('axios');
-const PORT = process.env.PORT || 8080;
 
 class BoardPage extends Component{
      constructor(){
@@ -19,6 +18,7 @@ class BoardPage extends Component{
           this.showForm = this.showForm.bind(this);
           this.handleChange = this.handleChange.bind(this);
           this.addPost = this.addPost.bind(this);
+          this.resetForm = this.resetForm.bind(this);
      }
 
      showForm(){
@@ -60,6 +60,15 @@ class BoardPage extends Component{
           })
      }
 
+     resetForm(e){
+          e.preventDefault();
+          this.setState({
+               showForm: false,
+               formTitle: '',
+               formText: '',
+          })
+     }
+
      componentWillMount(){
           axios.get('/boards/' + this.props.match.params.boardId)
           .then(board => {
@@ -96,14 +105,16 @@ class BoardPage extends Component{
                          onChange={this.handleChange}
                     />
 
+                    <Button type="button" onClick={this.resetForm}>Cancel</Button>
+
                     <Button type="submit">Submit</Button>
                </form> :
                <Button onClick={this.showForm}
                     style={{display: this.props.loggedInId ? 'inline' : 'none'}}>New Post</Button>
           return (
                <div>
-                    <h2>{this.state.name}</h2>
-                    <p className="caption--margin">Welcome. Please feel free to learn and discuss.</p>
+                    <h1 className="heading">{this.state.name}</h1>
+                    <p className="caption">Welcome. Please feel free to learn and discuss.</p>
                     {form}
                     <div className="post--container">{postCards}</div>
                </div>
