@@ -31,7 +31,7 @@ class SignupPage extends Component{
                username: this.state.username,
                password: this.state.password,
           }
-          axios.post('/register', signupBody)
+          axios.post('/app/register', signupBody)
           .then(response => {
                localStorage.setItem('user_id', response.data.user_id);
                localStorage.setItem('username', response.data.username);

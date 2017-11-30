@@ -14,7 +14,7 @@ class ProfilePage extends Component{
      }
 
      componentWillMount(){
-          axios.get('/follow/' + this.props.match.params.userId)
+          axios.get('/app/follow/' + this.props.match.params.userId)
           .then(user => {
                this.setState({
                     id: user.data.id,

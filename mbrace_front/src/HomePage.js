@@ -13,7 +13,7 @@ class HomePage extends Component{
      }
 
      componentWillMount(){
-          axios.get('/boards')
+          axios.get('/app/boards')
           .then(boards => {
                this.setState({
                     boards: boards.data,

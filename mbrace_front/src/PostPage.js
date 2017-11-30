@@ -34,7 +34,7 @@ class PostPage extends Component{
      }
 
      followPost(){
-          axios.post('/follow/' + this.state.id, {
+          axios.post('/app/follow/' + this.state.id, {
                user_id: this.props.loggedInId,
           },
           {
@@ -54,7 +54,7 @@ class PostPage extends Component{
      }
 
      unfollowPost(){
-          axios.delete('/follow/' + this.state.id,
+          axios.delete('/app/follow/' + this.state.id,
           {
                headers: {
                     'authorization': this.props.getToken(),
@@ -77,7 +77,7 @@ class PostPage extends Component{
      editPost(e){
           e.preventDefault();
           const text = e.target["text"].value
-          axios.put('/posts/' + this.state.id, {
+          axios.put('/app/posts/' + this.state.id, {
                text: text,
                user_id: this.props.loggedInId,
           },
@@ -98,7 +98,7 @@ class PostPage extends Component{
      }
 
      deletePost(){
-          axios.delete('/posts/' + this.state.id, {
+          axios.delete('/app/posts/' + this.state.id, {
                headers: {
                     'authorization': this.props.getToken(),
                },
@@ -131,7 +131,7 @@ class PostPage extends Component{
 
      addComment(e){
           e.preventDefault();
-          axios.post('/posts/' + this.state.id, {
+          axios.post('/app/posts/' + this.state.id, {
                text: this.state.formText,
                user_id: this.props.loggedInId,
                username: this.props.loggedInUser,
@@ -170,7 +170,7 @@ class PostPage extends Component{
      editComment(e, id){
           e.preventDefault();
           const text = e.target["text"].value
-          axios.put('/comments/' + id, {
+          axios.put('/app/comments/' + id, {
                text: text,
                user_id: this.props.loggedInId,
           },
@@ -193,7 +193,7 @@ class PostPage extends Component{
      }
 
      deleteComment(id){
-          axios.delete('/comments/' + id, {
+          axios.delete('/app/comments/' + id, {
                headers: {
                     'authorization': this.props.getToken(),
                },
@@ -213,7 +213,7 @@ class PostPage extends Component{
      }
 
      componentWillMount(){
-          axios.get('/posts/' + this.props.match.params.postId)
+          axios.get('/app/posts/' + this.props.match.params.postId)
           .then(post => {
                this.setState({
                     id: post.data.id,

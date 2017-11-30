@@ -35,7 +35,7 @@ class BoardPage extends Component{
 
      addPost(e){
           e.preventDefault();
-          axios.post('/boards/' + this.state.id, {
+          axios.post('/app/boards/' + this.state.id, {
                title: this.state.formTitle,
                text: this.state.formText,
                user_id: this.props.loggedInId,
@@ -70,7 +70,7 @@ class BoardPage extends Component{
      }
 
      componentWillMount(){
-          axios.get('/boards/' + this.props.match.params.boardId)
+          axios.get('/app/boards/' + this.props.match.params.boardId)
           .then(board => {
                this.setState({
                     id: board.data.id,

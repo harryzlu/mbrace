@@ -16,7 +16,8 @@ app.use(express.urlencoded({extended: true}));
 
 const path = require('path');
 
-app.use( express.static(path.join(__dirname, '/mbrace_front/build')));
+console.log(path.join(__dirname, 'mbrace_front/build'))
+app.use(express.static(__dirname + '/mbrace_front/build'));
 
 const knex = require('knex')({
      client: 'postgres',
@@ -123,7 +124,7 @@ function formatPostObj(posts){
 // endpoints
 
 // get all boards and the number of posts in each
-app.get('/boards', (req, res)=>{
+app.get('/app/boards', (req, res)=>{
      Board.fetchAll({withRelated: 'posts'})
      .then(boards => {
           boards = boards.map(board => {
@@ -141,7 +142,7 @@ app.get('/boards', (req, res)=>{
 });
 
 // make a new board
-app.post('/boards', (req, res)=>{
+app.post('/app/boards', (req, res)=>{
      new Board({
           name: req.body.name,
      })
@@ -155,7 +156,7 @@ app.post('/boards', (req, res)=>{
 })
 
 // search for posts matching a query string with the author and the number of comments in each, sorted by latest first
-app.get('/search', (req, res)=>{
+app.get('/app/search', (req, res)=>{
      const queries = req.query.text.split(' ');
      Post.query(qb => {
           queries.forEach(qTerm => {
@@ -178,7 +179,7 @@ app.get('/search', (req, res)=>{
 });
 
 // get all posts in a board, the author, and the number of comments in each, sorted by latest first
-app.get('/boards/:id', (req, res)=>{
+app.get('/app/boards/:id', (req, res)=>{
      Board.where({id: req.params.id})
      .fetch({withRelated: ['posts', 'posts.user', 'posts.comments']})
      .then(board => {
@@ -195,7 +196,7 @@ app.get('/boards/:id', (req, res)=>{
 });
 
 // add a new post to a board and follow the post
-app.post('/boards/:id', authorize, (req, res)=>{
+app.post('/app/boards/:id', authorize, (req, res)=>{
      let createdPost = {};
      new Post({
           title: req.body.title,
@@ -230,7 +231,7 @@ app.post('/boards/:id', authorize, (req, res)=>{
 });
 
 // edit a post
-app.put('/posts/:id', authorize, (req, res)=>{
+app.put('/app/posts/:id', authorize, (req, res)=>{
      const post_id = req.params.id;
      Post.where({
           id: post_id,
@@ -252,7 +253,7 @@ app.put('/posts/:id', authorize, (req, res)=>{
 });
 
 // delete a post
-app.delete('/posts/:id', authorize, (req, res)=>{
+app.delete('/app/posts/:id', authorize, (req, res)=>{
      Post.where({
           id: req.params.id,
           user_id: req.body.user_id,
@@ -267,7 +268,7 @@ app.delete('/posts/:id', authorize, (req, res)=>{
 });
 
 // get all comments in a post and the author of each, sorted by latest first
-app.get('/posts/:id', (req, res)=>{
+app.get('/app/posts/:id', (req, res)=>{
      Post.where({id: req.params.id})
      .fetch({withRelated: ['comments', 'comments.user', 'user', 'follows', 'board']})
      .then(post => {
@@ -303,7 +304,7 @@ app.get('/posts/:id', (req, res)=>{
 });
 
 // add a new comment to a post and follow the post
-app.post('/posts/:id', authorize, (req, res)=>{
+app.post('/app/posts/:id', authorize, (req, res)=>{
      let createdComment;
      new PostComment({
           text: req.body.text,
@@ -345,7 +346,7 @@ app.post('/posts/:id', authorize, (req, res)=>{
 });
 
 // edit a comment
-app.put('/comments/:id', authorize, (req, res)=>{
+app.put('/app/comments/:id', authorize, (req, res)=>{
      const comment_id = req.params.id;
      PostComment.where({
           id: comment_id,
@@ -367,7 +368,7 @@ app.put('/comments/:id', authorize, (req, res)=>{
 });
 
 // delete a comment
-app.delete('/comments/:id', authorize, (req, res)=>{
+app.delete('/app/comments/:id', authorize, (req, res)=>{
      PostComment.where({
           id: req.params.id,
           user_id: req.body.user_id,
@@ -382,7 +383,7 @@ app.delete('/comments/:id', authorize, (req, res)=>{
 });
 
 // register a user
-app.post('/register', (req, res)=>{
+app.post('/app/register', (req, res)=>{
      const username = req.body.username;
      const password = req.body.password;
      bcrypt.genSalt(12, (err, salt)=>{
@@ -419,7 +420,7 @@ app.post('/register', (req, res)=>{
 });
 
 // log in to account
-app.post('/login', (req, res)=>{
+app.post('/app/login', (req, res)=>{
      const username = req.body.username;
      const password = req.body.password;
      User.where({username: username})
@@ -454,7 +455,7 @@ app.post('/login', (req, res)=>{
 });
 
 // get all followed posts, the author, and the number of comments in each, sorted by time posted
-app.get('/follow/:id', (req, res)=>{
+app.get('/app/follow/:id', (req, res)=>{
      User.where({id: req.params.id})
      .fetch({withRelated: ['follows', 'follows.post', 'follows.post.user', 'follows.post.comments']})
      .then(user => {
@@ -473,7 +474,7 @@ app.get('/follow/:id', (req, res)=>{
 });
 
 // follow a post
-app.post('/follow/:id', authorize, (req, res)=>{
+app.post('/app/follow/:id', authorize, (req, res)=>{
      new Follow({
           user_id: req.body.user_id,
           post_id: req.params.id,
@@ -488,7 +489,7 @@ app.post('/follow/:id', authorize, (req, res)=>{
 });
 
 // unfollow a post
-app.delete('/follow/:id', authorize, (req, res)=>{
+app.delete('/app/follow/:id', authorize, (req, res)=>{
      Follow.where({
           user_id: req.body.user_id,
           post_id: req.params.id,
@@ -503,7 +504,7 @@ app.delete('/follow/:id', authorize, (req, res)=>{
 });
 
 app.get('*', (req, res) => {
-     res.sendFile(path.join(__dirname, './mbrace_front/build/index.html'));
+     res.sendFile(__dirname + '/mbrace_front/build/index.html');
 });
 
 app.listen(PORT, () => {
