@@ -157,7 +157,6 @@ app.post('/boards', (req, res)=>{
 
 // search for posts matching a query string with the author and the number of comments in each, sorted by latest first
 app.get('/search', (req, res)=>{
-     res.send('testing')
      const queries = req.query.text.split(' ');
      Post.query(qb => {
           queries.forEach(qTerm => {
@@ -204,7 +203,7 @@ app.post('/boards/:id', authorize, (req, res)=>{
           text: req.body.text,
           board_id: req.params.id,
           user_id: req.body.user_id,
-          time_posted: moment().format("MM-DD-YYYY, HH:mm"),
+          time_posted: moment().format("MMM DD, YYYY // hh:mmA"),
      })
      .save()
      .then(savedPost => {
@@ -311,7 +310,7 @@ app.post('/posts/:id', authorize, (req, res)=>{
           text: req.body.text,
           post_id: req.params.id,
           user_id: req.body.user_id,
-          time_posted: moment().format("YYYY-MM-DD, HH:mm"),
+          time_posted: moment().format("MMM DD, YYYY // hh:mmA"),
      })
      .save()
      .then(savedComment => {

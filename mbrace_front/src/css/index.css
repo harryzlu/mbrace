@@ -2,28 +2,59 @@
 body {
   margin: 0;
   padding: 0 0 2rem 0;
+  background-color: #FFF8FA;
   font-family: "Oxygen", sans-serif;
   font-size: 16px;
+  color: #383E47;
   text-align: center; }
 
-nav .brand-logo.right {
-  right: 1rem; }
+nav {
+  background-color: #E8F1FC; }
+  nav ul a {
+    color: #3669D4; }
+  nav .brand-logo.right {
+    right: 1rem; }
+    nav .brand-logo.right a {
+      color: #383E47;
+      font-weight: bold; }
+  nav .material-icons {
+    color: #FFF8FA; }
+    nav .material-icons:hover {
+      color: #3669D4;
+      transition: color 0.3s ease; }
 
 h2 {
-  margin: 5rem 0 2rem 0; }
+  max-width: 32rem;
+  margin: 5rem auto 2rem auto;
+  font-weight: bold; }
 
 a {
-  color: rgba(0, 0, 0, 0.87); }
+  color: #3669D4;
+  cursor: pointer; }
+  a:hover {
+    color: #5796FF;
+    transition: color 0.3s ease; }
 
-form {
-  max-width: 48rem;
+.form-style {
+  max-width: 55rem;
   padding: 2rem; }
+  .form-style input:focus:not([readonly]) {
+    border-bottom: 1px solid #3669D4;
+    box-shadow: 0 1px 0 0 #3669D4; }
+  .form-style .btn {
+    margin-top: 1rem; }
 
-button {
+.btn {
   margin-left: 1rem;
-  margin-right: 1rem; }
+  margin-right: 1rem;
+  padding: 0 1.2rem;
+  border-radius: 0.5rem;
+  text-transform: none;
+  background-color: #3669D4; }
+  .btn:hover, .btn:focus {
+    background-color: #5796FF; }
 
-.side-auto-margin, form, .board--container, .post--container .post--card, .post--header, .comment--container .comment--card {
+.side-auto-margin, .form-style, .board--container, .post--container .post--card, .post--header, .comment--container .comment--card {
   margin-left: auto;
   margin-right: auto; }
 
@@ -33,17 +64,36 @@ button {
 .card {
   text-align: left; }
 
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
+  color: #3669D4;
+  text-transform: none;
+  margin: 0; }
+  .card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating):hover {
+    color: #5796FF;
+    transition: color 0.3s ease; }
+
+.modal .modal-footer .form-style {
+  padding: 0; }
+.modal .modal-footer .btn {
+  margin: 0 0 1rem 1.5rem; }
+
 .board--container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  max-width: 48rem; }
+  max-width: 55rem; }
   .board--container .board--card {
-    width: 18rem;
-    height: 18rem;
+    width: 15rem;
+    height: 15rem;
     border-radius: 50%;
-    background-color: #FFFFCC;
-    text-align: center; }
+    background-color: #E8F1FC;
+    text-align: center;
+    margin: 1.5rem; }
+    .board--container .board--card:hover {
+      box-shadow: 0 3px 2px 1px rgba(0, 0, 0, 0.14), 0 2px 5px 1px rgba(0, 0, 0, 0.12), 0 4px 1px -1px rgba(0, 0, 0, 0.2); }
+    .board--container .board--card .board__title {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem; }
     .board--container .board--card .card-content {
       height: 100%;
       display: flex;
@@ -53,30 +103,34 @@ button {
 .post--container {
   margin: 3rem 0; }
   .post--container .post--card {
-    max-width: 48rem;
+    max-width: 32rem;
     margin-top: 2rem;
-    background-color: #FFFFCC; }
+    background-color: #E8F1FC; }
 
-.post-details, .comment-details {
+.post-details, .comment--container .comment--card .comment-details {
   font-size: 0.8rem;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between; }
-  .post-details p, .comment-details p {
+  justify-content: space-between;
+  text-transform: none;
+  color: rgba(160, 160, 160, 0.9); }
+  .post-details p, .comment--container .comment--card .comment-details p {
     margin: 0; }
 
 .post--header {
   margin-top: 5rem;
   margin-bottom: 2rem;
-  max-width: 48rem;
-  background-color: lightblue; }
+  max-width: 32rem;
+  background-color: #E8F1FC; }
 
 .comment--container {
   margin: 3rem 0; }
   .comment--container .comment--card {
-    background-color: #FFFFCC;
+    background-color: #FFEFCB;
     margin-top: 2rem;
-    max-width: 48rem; }
+    max-width: 32rem; }
+    .comment--container .comment--card .ud-comment {
+      font-size: 0.8rem; }
 
 .modal {
   padding: 1rem; }

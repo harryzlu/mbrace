@@ -49,7 +49,7 @@ class LoginPage extends Component{
                     </div>
                     <h2>Log In</h2>
                     
-                    <form onSubmit={this.logIn}>
+                    <form className="form-style" onSubmit={this.logIn}>
                          <input required
                               type="text"
                               name="username"

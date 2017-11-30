@@ -79,15 +79,17 @@ class BoardPage extends Component{
                <PostCard key={post.id}
                     details={post}/>)
           const form = this.state.showForm ?
-               <form onSubmit={this.addPost}>
-                    <input type="text"
+               <form className="form-style" onSubmit={this.addPost}>
+                    <input required
+                         type="text"
                          name="formTitle"
                          placeholder="Title"
                          value={this.state.formTitle}
                          onChange={this.handleChange}
                     />
 
-                    <input type="text"
+                    <input required
+                         type="text"
                          name="formText"
                          placeholder="Text"
                          value={this.state.formText}
