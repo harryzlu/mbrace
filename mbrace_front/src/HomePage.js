@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom';
 import {Card} from 'react-materialize';
 
 const axios = require('axios');
-const PORT = process.env.PORT || 8080;
 
 class HomePage extends Component{
      constructor(){
@@ -31,7 +30,7 @@ class HomePage extends Component{
                     details={board}/>)
           return (
                <div>
-                    <h2 className="">MBrace</h2>
+                    <h1 className="heading">MBrace</h1>
                     <p className="caption--margin">Welcome. How may we help today?</p>
                     <div className="board--container">{boardCards}</div>
                </div>

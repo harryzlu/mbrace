@@ -3,7 +3,6 @@ import {Button} from 'react-materialize';
 import PostCard from './PostCard';
 
 const axios = require('axios');
-const PORT = process.env.PORT || 8080;
 
 class BoardPage extends Component{
      constructor(){
@@ -102,7 +101,7 @@ class BoardPage extends Component{
                     style={{display: this.props.loggedInId ? 'inline' : 'none'}}>New Post</Button>
           return (
                <div>
-                    <h2>{this.state.name}</h2>
+                    <h1 className="heading">{this.state.name}</h1>
                     <p className="caption--margin">Welcome. Please feel free to learn and discuss.</p>
                     {form}
                     <div className="post--container">{postCards}</div>

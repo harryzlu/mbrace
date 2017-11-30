@@ -3,7 +3,6 @@ import {Redirect, Link} from 'react-router-dom';
 import {Button, Modal, Card} from 'react-materialize';
 
 const axios = require('axios');
-const PORT = process.env.PORT || 8080;
 
 class PostPage extends Component{
      constructor(){

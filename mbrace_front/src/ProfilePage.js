@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PostCard from './PostCard';
 
 const axios = require('axios');
-const PORT = process.env.PORT || 8080;
 
 class ProfilePage extends Component{
      constructor(){
@@ -33,7 +32,7 @@ class ProfilePage extends Component{
                <PostCard details={post}/>)
           return(
                <div>
-                    <h2>{this.state.username}</h2>
+                    <h1 className="heading">{this.state.username}</h1>
                     <p className="caption--margin">Followed Posts</p>
                     <div className="post--container">{postCards}</div>
                </div>

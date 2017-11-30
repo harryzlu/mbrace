@@ -3,7 +3,6 @@ import {Link, Redirect} from 'react-router-dom';
 import {Button} from 'react-materialize';
 
 const axios = require('axios');
-const PORT = process.env.PORT || 8080;
 
 class LoginPage extends Component{
      constructor(){
@@ -47,7 +46,7 @@ class LoginPage extends Component{
                     <div style={{display: 'none'}}>
                          {this.props.loggedInId && <Redirect to='/'/>}
                     </div>
-                    <h2>Log In</h2>
+                    <h1 className="heading">Log In</h1>
                     
                     <form className="form-style" onSubmit={this.logIn}>
                          <input required

@@ -1,12 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Oxygen:400,700');
 
-$heading--margin: 5rem auto 2rem auto;
+$heading--margin: 5rem auto 1.5rem auto;
 $max--width: 55rem;
 $card--width: 32rem;
 $default-font--color: #383E47;
 $alt-text--color: #3669D4;
 $alt-hover--color: #5796FF;
 $item--color: #E8F1FC;
+$item--color-transparent: rgba(232, 241, 252, 0.7);
 $background--color: #FFF8FA;
 $comment--color: #FFEFCB;
 $transition-speed: color .3s ease;
@@ -22,28 +23,34 @@ body {
 }
 
 nav {
-     background-color: $item--color;
+     background-color: $item--color-transparent;
      ul a{
           color: $alt-text--color;
      }
+
      .brand-logo.right {
           right: 1rem;
-          a {
+          color: $alt-text--color;
+          font-weight: bold;
+          &:hover {
                color: $default-font--color;
-               font-weight: bold;
+               transition: $transition-speed;
           }
      }
+
      .material-icons {
-          color: $background--color;
+          color: $alt-text--color;
           &:hover {
-               color: $alt-text--color;
+               color: $default-font--color;
                transition: $transition-speed;
           }
      }
 }
 
-h2 {
-     max-width: $card--width;
+.heading {
+     font-size: 2.5rem;
+     line-height: 3rem;
+     max-width: 20rem;
      margin: $heading--margin;
      font-weight: bold;
 }
@@ -166,7 +173,25 @@ a {
           max-width: $card--width;
           @extend .side-auto-margin;
           margin-top: 2rem;
-          background-color: $item--color;
+          background-color: $background--color;
+          box-shadow: none;
+
+          .card-content {
+               background-color: $item--color;
+               box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+               margin-bottom: 0.1rem;
+               padding-top: 1.3rem;
+               padding-bottom: 1.3rem;
+          }
+
+          .card-action {
+               padding-top: 0.7rem;
+               padding-bottom: 0;
+          }
+
+          .post--title {
+               font-weight: bold;
+          }
      }
 }
 

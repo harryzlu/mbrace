@@ -9,23 +9,27 @@ body {
   text-align: center; }
 
 nav {
-  background-color: #E8F1FC; }
+  background-color: rgba(232, 241, 252, 0.7); }
   nav ul a {
     color: #3669D4; }
   nav .brand-logo.right {
-    right: 1rem; }
-    nav .brand-logo.right a {
+    right: 1rem;
+    color: #3669D4;
+    font-weight: bold; }
+    nav .brand-logo.right:hover {
       color: #383E47;
-      font-weight: bold; }
+      transition: color 0.3s ease; }
   nav .material-icons {
-    color: #FFF8FA; }
+    color: #3669D4; }
     nav .material-icons:hover {
-      color: #3669D4;
+      color: #383E47;
       transition: color 0.3s ease; }
 
-h2 {
-  max-width: 32rem;
-  margin: 5rem auto 2rem auto;
+.heading {
+  font-size: 2.5rem;
+  line-height: 3rem;
+  max-width: 20rem;
+  margin: 5rem auto 1.5rem auto;
   font-weight: bold; }
 
 a {
@@ -105,7 +109,19 @@ a {
   .post--container .post--card {
     max-width: 32rem;
     margin-top: 2rem;
-    background-color: #E8F1FC; }
+    background-color: #FFF8FA;
+    box-shadow: none; }
+    .post--container .post--card .card-content {
+      background-color: #E8F1FC;
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+      margin-bottom: 0.1rem;
+      padding-top: 1.3rem;
+      padding-bottom: 1.3rem; }
+    .post--container .post--card .card-action {
+      padding-top: 0.7rem;
+      padding-bottom: 0; }
+    .post--container .post--card .post--title {
+      font-weight: bold; }
 
 .post-details, .comment--container .comment--card .comment-details {
   font-size: 0.8rem;

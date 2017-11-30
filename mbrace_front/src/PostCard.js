@@ -16,7 +16,7 @@ class PostCard extends Component{
                               <p>{this.props.details.comment_count} Comments</p>
                          </div>
                     ]}>
-                    <p><Link to={'/posts/' + this.props.details.id}>{this.props.details.title}</Link></p>
+                    <p className="post--title"><Link to={'/posts/' + this.props.details.id}>{this.props.details.title}</Link></p>
                </Card>
           )
      }

@@ -61,11 +61,12 @@ class App extends Component {
                ];
           return (
                <div>
-                    <Navbar className="navbar--color" brand={<Link to='/'>MBrace</Link>} left>
+                    <Navbar className="navbar--color" brand="MBrace" left>
                          <div className="nav-wrapper">
                               <ul>
-                                   {navButtons}
+                                   <li key="home"><Link to='/'>Home</Link></li>
                                    <li key="search"><Link to='/search'>Search</Link></li>
+                                   {navButtons}
                               </ul>
                          </div>
                     </Navbar>
