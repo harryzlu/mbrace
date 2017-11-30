@@ -141,6 +141,20 @@ app.get('/boards', (req, res)=>{
      });
 });
 
+// make a new board
+app.post('/boards', (req, res)=>{
+     new Board({
+          name: req.body.name,
+     })
+     .save()
+     .then(savedBoard=>{
+          res.json(savedBoard);
+     })
+     .catch(err=>{
+          res.sendStatus(500);
+     })
+})
+
 // search for posts matching a query string with the author and the number of comments in each, sorted by latest first
 app.get('/search', (req, res)=>{
      res.send('testing')
