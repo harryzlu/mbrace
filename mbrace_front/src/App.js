@@ -61,7 +61,7 @@ class App extends Component {
                ];
           return (
                <div>
-                    <Navbar className="navbar--color" brand="MBrace" left>
+                    <Navbar className="navbar--color" brand="MBrace" right>
                          <div className="nav-wrapper">
                               <ul>
                                    <li key="home"><Link to='/'>Home</Link></li>
@@ -70,7 +70,7 @@ class App extends Component {
                               </ul>
                          </div>
                     </Navbar>
-                    <Switch>
+                    <div className="pages"><Switch>
                          <Route exact path="/" render={()=><HomePage/>}/>
                          <Route path="/boards/:boardId" render={({match})=><BoardPage
                               match={match}
@@ -98,7 +98,7 @@ class App extends Component {
                               match={match}
                          />}/>
                          <Route path="/search" render={()=><SearchPage/>}/>
-                    </Switch>
+                    </Switch></div>
                </div>
           );
      }

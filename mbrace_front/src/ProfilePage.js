@@ -29,7 +29,8 @@ class ProfilePage extends Component{
 
      render(){
           const postCards = this.state.posts.map(post =>
-               <PostCard details={post}/>)
+               <PostCard key={post.id}
+                    details={post}/>)
           return(
                <div>
                     <h1 className="heading">{this.state.username}</h1>

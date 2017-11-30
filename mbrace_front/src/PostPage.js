@@ -28,6 +28,7 @@ class PostPage extends Component{
           this.showForm = this.showForm.bind(this);
           this.handleChange = this.handleChange.bind(this);
           this.addComment = this.addComment.bind(this);
+          this.resetForm = this.resetForm.bind(this);
           this.editComment = this.editComment.bind(this);
           this.deleteComment = this.deleteComment.bind(this);
      }
@@ -157,6 +158,15 @@ class PostPage extends Component{
           })
      }
 
+     resetForm(e){
+          e.preventDefault();
+          this.setState({
+               showCommentForm: false,
+               formTitle: '',
+               formText: '',
+          })
+     }
+
      editComment(e, id){
           e.preventDefault();
           const text = e.target["text"].value
@@ -240,6 +250,8 @@ class PostPage extends Component{
                          onChange={this.handleChange}
                     />
 
+                    <Button type="button" onClick={this.resetForm}>Cancel</Button>
+
                     <Button type="submit">Submit</Button>
                </form> :
                <Button onClick={this.showForm}>New Comment</Button>
@@ -275,6 +287,7 @@ class PostPage extends Component{
                     <div style={{display: 'none'}}>
                          {this.state.deleted && <Redirect to={'/boards/' + this.state.board_id}/>}
                     </div>
+                    <Link className="return-button" to={'/boards/' + this.state.board_id}><Button>Back</Button></Link>
                     <Card className="post--header" title={this.state.title} actions={[
                          <div className="post-details">
                               <p>Posted by: <Link to={'/profile/' + this.state.user_id}>

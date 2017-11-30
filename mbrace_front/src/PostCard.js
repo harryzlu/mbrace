@@ -5,8 +5,8 @@ import {Card} from 'react-materialize';
 class PostCard extends Component{
      render(){
           return(
-               <Card className="post--card"
-                    key={this.props.details.id}
+               <Card key={this.props.details.id}
+                    className="post--card"
                     actions={[
                          <div className="post-details">
                               <p>Posted by: <Link to={'/profile/' + this.props.details.user_id}>
