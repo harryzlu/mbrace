@@ -44,7 +44,7 @@ class BoardCard extends Component{
           return(
                <Link to={'/boards/' + this.props.details.id}>
                     <Card className="board--card">
-                         <h5>{this.props.details.name}</h5>
+                         <p className="board__title">{this.props.details.name}</p>
                          <p>{this.props.details.post_count} Posts</p>
                     </Card>
                </Link>

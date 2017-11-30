@@ -1,39 +1,85 @@
 @import url('https://fonts.googleapis.com/css?family=Oxygen:400,700');
 
-$heading--margin: 5rem 0 2rem 0;
-$max--width: 48rem;
-$default-font--color: rgba(0, 0, 0, 0.87);
-$item--color: #FFFFCC;
+$heading--margin: 5rem auto 2rem auto;
+$max--width: 55rem;
+$card--width: 32rem;
+$default-font--color: #383E47;
+$alt-text--color: #3669D4;
+$alt-hover--color: #5796FF;
+$item--color: #E8F1FC;
+$background--color: #FFF8FA;
+$comment--color: #FFEFCB;
+$transition-speed: color .3s ease;
 
 body {
      margin: 0;
      padding: 0 0 2rem 0;
+     background-color: $background--color;
      font-family: "Oxygen", sans-serif;
      font-size: 16px;
+     color: $default-font--color;
      text-align: center;
 }
 
-nav .brand-logo.right {
-     right: 1rem;
+nav {
+     background-color: $item--color;
+     ul a{
+          color: $alt-text--color;
+     }
+     .brand-logo.right {
+          right: 1rem;
+          a {
+               color: $default-font--color;
+               font-weight: bold;
+          }
+     }
+     .material-icons {
+          color: $background--color;
+          &:hover {
+               color: $alt-text--color;
+               transition: $transition-speed;
+          }
+     }
 }
 
 h2 {
+     max-width: $card--width;
      margin: $heading--margin;
+     font-weight: bold;
 }
 
 a {
-     color: $default-font--color;
+     color: $alt-text--color;
+     cursor: pointer;
+     &:hover {
+          color: $alt-hover--color;
+          transition: $transition-speed;
+     }
 }
 
-form {
+.form-style {
      @extend .side-auto-margin;
      max-width: $max--width;
      padding: 2rem;
+     input:focus:not([readonly]) {
+          border-bottom: 1px solid $alt-text--color;
+          box-shadow: 0 1px 0 0 $alt-text--color;
+     }
+     .btn {
+          margin-top: 1rem;
+     }
 }
 
-button {
+.btn {
      margin-left: 1rem;
      margin-right: 1rem;
+     padding: 0 1.2rem;
+     border-radius: 0.5rem;
+     text-transform: none;
+     background-color: $alt-text--color;
+     &:hover, &:focus {
+          background-color: $alt-hover--color;
+     }
 }
 
 .side-auto-margin {
@@ -49,6 +95,31 @@ button {
      text-align: left;
 }
 
+.card {
+     .card-action {
+          a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating){
+               color: $alt-text--color;
+               text-transform: none;
+               margin: 0;
+               &:hover {
+                    color: $alt-hover--color;
+                    transition: $transition-speed;
+               }
+          }
+     }
+}
+
+.modal {
+     .modal-footer {
+          .form-style {
+               padding: 0;
+          }
+          .btn {
+               margin: 0 0 1rem 1.5rem;
+          }
+     }
+}
+
 // home page
 
 .board--container {
@@ -59,11 +130,23 @@ button {
      max-width: $max--width;
 
      .board--card {
-          width: 18rem;
-          height: 18rem;
+          width: 15rem;
+          height: 15rem;
           border-radius: 50%;
           background-color: $item--color;
           text-align: center;
+          margin: 1.5rem;
+
+          &:hover{
+               box-shadow: 0 3px 2px 1px rgba(0,0,0,0.14),
+                    0 2px 5px 1px rgba(0,0,0,0.12),
+                    0 4px 1px -1px rgba(0,0,0,0.2);
+          }
+
+          .board__title {
+               font-size: 1.3rem;
+               margin-bottom: 0.5rem;
+          }
 
           .card-content{
                height: 100%;
@@ -74,13 +157,13 @@ button {
      }
 }
 
-// board page
+// post cards
 
 .post--container {
      margin: 3rem 0;
 
      .post--card {
-          max-width: $max--width;
+          max-width: $card--width;
           @extend .side-auto-margin;
           margin-top: 2rem;
           background-color: $item--color;
@@ -92,6 +175,8 @@ button {
      display: flex;
      flex-wrap: wrap;
      justify-content: space-between;
+     text-transform: none;
+     color: rgba(160,160,160,0.9);
      p {
           margin: 0;
      }
@@ -102,24 +187,28 @@ button {
 .post--header {
      margin-top: 5rem;
      margin-bottom: 2rem;
-     max-width: $max--width;
+     max-width: $card--width;
      @extend .side-auto-margin;
-     background-color: lightblue;
+     background-color: $item--color;
 }
 
 .comment--container {
      margin: 3rem 0;
 
      .comment--card {
-          background-color: $item--color;
+          background-color: $comment--color;
           margin-top: 2rem;
-          max-width: $max--width;
+          max-width: $card--width;
           @extend .side-auto-margin;
-     }
-}
 
-.comment-details {
-     @extend .post-details;
+          .comment-details {
+               @extend .post-details;
+          }
+
+          .ud-comment {
+               font-size: 0.8rem;
+          }
+     }
 }
 
 .modal {

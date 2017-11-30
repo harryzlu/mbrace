@@ -53,7 +53,7 @@ class SignupPage extends Component{
                     </div>
                     <h2>Sign Up</h2>
                     
-                    <form onSubmit={this.signUp}>
+                    <form className="form-style" onSubmit={this.signUp}>
                          <input required
                               type="text"
                               name="username"

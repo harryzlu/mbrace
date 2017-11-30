@@ -9,11 +9,11 @@ class PostCard extends Component{
                     key={this.props.details.id}
                     actions={[
                          <div className="post-details">
-                              <p>POSTED BY: <Link to={'/profile/' + this.props.details.user_id}>
+                              <p>Posted by: <Link to={'/profile/' + this.props.details.user_id}>
                                    {this.props.details.posted_by}</Link>
                               </p>
-                              <p>POSTED AT: {this.props.details.time_posted}</p>
-                              <p>{this.props.details.comment_count} COMMENTS</p>
+                              <p>{this.props.details.time_posted}</p>
+                              <p>{this.props.details.comment_count} Comments</p>
                          </div>
                     ]}>
                     <p><Link to={'/posts/' + this.props.details.id}>{this.props.details.title}</Link></p>

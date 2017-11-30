@@ -224,15 +224,17 @@ class PostPage extends Component{
      }
 
      render(){
-          let commentCards = this.state.comments.map(comment =>
+          const commentCards = this.state.comments.map(comment =>
                <CommentCard key={comment.id}
                     details={comment}
                     loggedInId={this.props.loggedInId}
                     deleteComment={this.deleteComment}
                     editComment={this.editComment}/>)
-          let form = this.state.showCommentForm ?
-               <form onSubmit={this.addComment}>
-                    <input type="text"
+
+          const form = this.state.showCommentForm ?
+               <form className="form-style" onSubmit={this.addComment}>
+                    <input required
+                         type="text"
                          name="formText"
                          placeholder="Text"
                          value={this.state.formText}
@@ -242,6 +244,33 @@ class PostPage extends Component{
                     <Button type="submit">Submit</Button>
                </form> :
                <Button onClick={this.showForm}>New Comment</Button>
+
+          const UDPost = this.props.loggedInId === this.state.user_id ? <span>
+               <Modal
+                    header='Edit Post'
+                    trigger={<a>Edit</a>}
+                    actions={
+                         <div>
+                              <form className="form-style" onSubmit={this.editPost}>
+                                   <input required type="text" name="text" defaultValue={this.state.text}/>
+                                   <Button modal="close" type="submit">Submit</Button>
+                                   <Button type="reset" modal="close">Cancel</Button>
+                              </form>
+                         </div>
+                    }>
+               </Modal> / <Modal
+                    header='Delete Post'
+                    trigger={<a>Delete</a>}
+                    actions={
+                         <div>
+                              <Button modal="close" onClick={this.deletePost}>OK</Button>
+                              <Button modal="close">Cancel</Button>
+                         </div>
+                    }>
+                    <p>Are you sure?</p>
+               </Modal>
+          </span> :
+          <noscript/>
           return (
                <div>
                     <div style={{display: 'none'}}>
@@ -249,41 +278,16 @@ class PostPage extends Component{
                     </div>
                     <Card className="post--header" title={this.state.title} actions={[
                          <div className="post-details">
-                              <p>POSTED BY: <Link to={'/profile/' + this.state.user_id}>
+                              <p>Posted by: <Link to={'/profile/' + this.state.user_id}>
                                    {this.state.posted_by}</Link>
                               </p>
-                              <p>POSTED AT: {this.state.time_posted}</p>
+                              {UDPost}
+                              <p>{this.state.time_posted}</p>
                          </div>
                     ]}>
                          <p>{this.state.text}</p>
-
                     </Card>
-                    <div style={{display: this.props.loggedInId === this.state.user_id ? 'inline' : 'none'}}>
-                         <Modal
-                              header='Edit Post'
-                              trigger={<Button>Edit</Button>}
-                              actions={
-                                   <div>
-                                        <form onSubmit={this.editPost}>
-                                             <input type="text" name="text" defaultValue={this.state.text}/>
-                                             <Button modal="close" type="submit">Submit</Button>
-                                             <Button type="reset" modal="close">Cancel</Button>
-                                        </form>
-                                   </div>
-                              }>
-                         </Modal>
-                         <Modal
-                              header='Delete Post'
-                              trigger={<Button>Delete</Button>}
-                              actions={
-                                   <div>
-                                        <Button modal="close" onClick={this.deletePost}>OK</Button>
-                                        <Button modal="close">Cancel</Button>
-                                   </div>
-                              }>
-                              <p>Are you sure?</p>
-                         </Modal>
-                    </div>
+
                     <div style={{display: this.props.loggedInId ? 'inline' : 'none'}}>
                          <Button onClick={this.state.following ? this.unfollowPost : this.followPost}>
                               {this.state.following ? "Unfollow" : "Follow"}
@@ -298,46 +302,47 @@ class PostPage extends Component{
 
 class CommentCard extends Component{
      render(){
+          const UDComment = this.props.loggedInId === this.props.details.user_id ? <span className="ud-comment">
+               <Modal
+                    header='Edit Comment'
+                    trigger={<a>Edit</a>}
+                    actions={
+                         <div>
+                              <form className="form-style" onSubmit={(e) => {this.props.editComment(e, this.props.details.id)}}>
+                                   <input required type="text" name="text" defaultValue={this.props.details.text}/>
+                                   <Button modal="close" type="submit">Submit</Button>
+                                   <Button type="reset" modal="close">Cancel</Button>
+                              </form>
+                         </div>
+                    }>
+               </Modal> / <Modal
+                    header='Delete Comment'
+                    trigger={<a>Delete</a>}
+                    actions={
+                         <div>
+                              <Button modal="close"
+                                   onClick={()=>{
+                                        this.props.deleteComment(this.props.details.id)
+                                   }}>OK</Button>
+                              <Button modal="close">Cancel</Button>
+                         </div>
+                    }>
+                    <p>Are you sure?</p>
+               </Modal>
+          </span> : 
+          <noscript/>
           return(
                <div>
-                    <Card className="comment--card">
+                    <Card className="comment--card" actions={[
                          <div className="comment-details">
-                              <Link to={'/profile/' + this.props.details.user_id}>
-                                   <p>{this.props.details.posted_by}</p>
-                              </Link>
+                              <p>Posted by: <Link to={'/profile/' + this.props.details.user_id}>
+                                   {this.props.details.posted_by}</Link>
+                              </p>
+                              {UDComment}
                               <p>{this.props.details.time_posted}</p>
-                         </div>
+                         </div>]}>
                          <p>{this.props.details.text}</p>
                     </Card>
-                    <div style={{display: this.props.loggedInId === this.props.details.user_id ? 'inline' : 'none'}}>
-                         <Modal
-                              header='Edit Comment'
-                              trigger={<Button>Edit</Button>}
-                              actions={
-                                   <div>
-                                        <form onSubmit={(e) => {this.props.editComment(e, this.props.details.id)}}>
-                                             <input type="text" name="text" defaultValue={this.props.details.text}/>
-                                             <Button modal="close" type="submit">Submit</Button>
-                                             <Button type="reset" modal="close">Cancel</Button>
-                                        </form>
-                                   </div>
-                              }>
-                         </Modal>
-                         <Modal
-                              header='Delete Comment'
-                              trigger={<Button>Delete</Button>}
-                              actions={
-                                   <div>
-                                        <Button modal="close"
-                                             onClick={()=>{
-                                                  this.props.deleteComment(this.props.details.id)
-                                             }}>OK</Button>
-                                        <Button modal="close">Cancel</Button>
-                                   </div>
-                              }>
-                              <p>Are you sure?</p>
-                         </Modal>
-                    </div>
                </div>
           )
      }
