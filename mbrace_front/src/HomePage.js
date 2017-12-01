@@ -31,7 +31,7 @@ class HomePage extends Component{
           return (
                <div>
                     <h1 className="heading">MBrace</h1>
-                    <p className="caption">Welcome. How may we help today?</p>
+                    <p className="caption">Welcome to MBrace, a community to help you help your loved ones.</p>
                     <div className="board--container">{boardCards}</div>
                </div>
           )

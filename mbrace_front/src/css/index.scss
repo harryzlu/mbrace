@@ -81,6 +81,10 @@ nav {
      }
 }
 
+#sidenav-overlay{
+     display: none;
+}
+
 .heading {
      font-size: 2.5rem;
      line-height: 3rem;
@@ -302,6 +306,9 @@ a {
 
 .return-button {
      position: absolute;
-     top: 1.5rem;
+     top: 1rem;
      left: 1rem;
+     .btn {
+          margin: 0;
+     }
 }
