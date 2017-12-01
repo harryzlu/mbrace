@@ -89,7 +89,9 @@ class BoardPage extends Component{
                <PostCard key={post.id}
                     details={post}/>)
           const form = this.state.showForm ?
-               <form className="form-style" onSubmit={this.addPost}>
+               <form className="form-style"
+                    onSubmit={this.addPost}
+                    autocomplete="nope">
                     <input required
                          type="text"
                          name="formTitle"
@@ -98,13 +100,14 @@ class BoardPage extends Component{
                          onChange={this.handleChange}
                     />
 
-                    <input required
+                    <textarea required
                          type="text"
                          name="formText"
                          placeholder="Text"
+                         wrap
                          value={this.state.formText}
-                         onChange={this.handleChange}
-                    />
+                         onChange={this.handleChange}>
+                    </textarea>
 
                     <Button type="button" onClick={this.resetForm}>Cancel</Button>
 

@@ -14,7 +14,7 @@ body {
   padding: 1rem 1rem 1.5rem 1rem;
   width: 80%;
   max-width: 55rem;
-  background-color: rgba(255, 248, 250, 0.7);
+  background-color: rgba(232, 241, 252, 0.7);
   transform: translateY(4rem); }
   .pages * {
     animation: fade-entrance 0.5s ease-in-out; }
@@ -73,6 +73,10 @@ a {
     box-shadow: 0 1px 0 0 #6675ac; }
   .form-style .btn {
     margin-top: 1rem; }
+  .form-style textarea {
+    height: 5rem;
+    overflow: hidden;
+    resize: none; }
 
 .btn {
   margin-left: 1rem;

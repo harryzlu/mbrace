@@ -435,7 +435,7 @@ app.post('/app/login', (req, res)=>{
                     const payload = {
                          iss: 'mbrace',
                          sub: username,
-                         exp: Math.floor((Date.now() / 1000) + (60 * 60)),
+                         exp: Math.floor((Date.now() / 1000) + (60 * 60 * 24)),
                     }
                     const token = jwt.sign(payload, secretKey);
                     res.status(200).json({

@@ -34,7 +34,9 @@ class SearchPage extends Component{
           return(
                <div>
                     <h1 className="heading">Search</h1>
-                    <form className="form-style" onSubmit={this.searchPosts}>
+                    <form className="form-style"
+                         onSubmit={this.searchPosts}
+                         autocomplete="nope">
                          <input required
                               type="text"
                               ref={ref=>this.queryStr = ref}

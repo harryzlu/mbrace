@@ -29,7 +29,7 @@ body {
      @extend .side-auto-margin;
      width: 80%;
      max-width: $max--width;
-     background-color: $background--color;
+     background-color: $item--color-transparent;
      transform: translateY(4rem);
      *{
           animation: fade-entrance 0.5s ease-in-out;
@@ -109,6 +109,11 @@ a {
      }
      .btn {
           margin-top: 1rem;
+     }
+     textarea {
+          height: 5rem;
+          overflow: hidden;
+          resize: none;
      }
 }
 

@@ -241,14 +241,16 @@ class PostPage extends Component{
                     editComment={this.editComment}/>)
 
           const form = this.state.showCommentForm ?
-               <form className="form-style" onSubmit={this.addComment}>
-                    <input required
+               <form className="form-style" onSubmit={this.addComment} autocomplete="nope">
+
+                    <textarea required
                          type="text"
                          name="formText"
                          placeholder="Text"
+                         wrap
                          value={this.state.formText}
-                         onChange={this.handleChange}
-                    />
+                         onChange={this.handleChange}>
+                    </textarea>
 
                     <Button type="button" onClick={this.resetForm}>Cancel</Button>
 
@@ -262,7 +264,7 @@ class PostPage extends Component{
                     trigger={<a>Edit</a>}
                     actions={
                          <div>
-                              <form className="form-style" onSubmit={this.editPost}>
+                              <form className="form-style" onSubmit={this.editPost} autocomplete="nope">
                                    <input required type="text" name="text" defaultValue={this.state.text}/>
                                    <Button modal="close" type="submit">Submit</Button>
                                    <Button type="reset" modal="close">Cancel</Button>
@@ -323,7 +325,9 @@ class CommentCard extends Component{
                     trigger={<a>Edit</a>}
                     actions={
                          <div>
-                              <form className="form-style" onSubmit={(e) => {this.props.editComment(e, this.props.details.id)}}>
+                              <form className="form-style"
+                                   onSubmit={(e) => {this.props.editComment(e, this.props.details.id)}}
+                                   autocomplete="nope">
                                    <input required type="text" name="text" defaultValue={this.props.details.text}/>
                                    <Button modal="close" type="submit">Submit</Button>
                                    <Button type="reset" modal="close">Cancel</Button>
