@@ -233,6 +233,10 @@ class PostPage extends Component{
      }
 
      render(){
+          const postText = this.state.text.split('\n').map((item, key) => {
+               return <span key={key}>{item}<br/></span>
+          })
+
           const commentCards = this.state.comments.map(comment =>
                <CommentCard key={comment.id}
                     details={comment}
@@ -241,13 +245,13 @@ class PostPage extends Component{
                     editComment={this.editComment}/>)
 
           const form = this.state.showCommentForm ?
-               <form className="form-style" onSubmit={this.addComment} autocomplete="nope">
+               <form className="form-style" onSubmit={this.addComment} autoComplete="nope">
 
                     <textarea required
                          type="text"
                          name="formText"
                          placeholder="Text"
-                         wrap
+                         wrap="true"
                          value={this.state.formText}
                          onChange={this.handleChange}>
                     </textarea>
@@ -264,7 +268,7 @@ class PostPage extends Component{
                     trigger={<a>Edit</a>}
                     actions={
                          <div>
-                              <form className="form-style" onSubmit={this.editPost} autocomplete="nope">
+                              <form className="form-style" onSubmit={this.editPost} autoComplete="nope">
                                    <input required type="text" name="text" defaultValue={this.state.text}/>
                                    <Button modal="close" type="submit">Submit</Button>
                                    <Button type="reset" modal="close">Cancel</Button>
@@ -299,7 +303,7 @@ class PostPage extends Component{
                               <p>{this.state.time_posted}</p>
                          </div>
                     ]}>
-                         <p>{this.state.text}</p>
+                         <p>{postText}</p>
                     </Card>
 
                     <p>{this.state.comments.length} Comments</p>
@@ -319,6 +323,9 @@ class PostPage extends Component{
 
 class CommentCard extends Component{
      render(){
+          const commentText = this.props.details.text.split('\n').map((item, key) => {
+               return <span key={key}>{item}<br/></span>
+          })
           const UDComment = this.props.loggedInId === this.props.details.user_id ? <span className="ud-comment">
                <Modal
                     header='Edit Comment'
@@ -327,7 +334,7 @@ class CommentCard extends Component{
                          <div>
                               <form className="form-style"
                                    onSubmit={(e) => {this.props.editComment(e, this.props.details.id)}}
-                                   autocomplete="nope">
+                                   autoComplete="nope">
                                    <input required type="text" name="text" defaultValue={this.props.details.text}/>
                                    <Button modal="close" type="submit">Submit</Button>
                                    <Button type="reset" modal="close">Cancel</Button>
@@ -360,7 +367,7 @@ class CommentCard extends Component{
                               {UDComment}
                               <p>{this.props.details.time_posted}</p>
                          </div>]}>
-                         <p>{this.props.details.text}</p>
+                         <p>{commentText}</p>
                     </Card>
                </div>
           )

@@ -91,7 +91,7 @@ class BoardPage extends Component{
           const form = this.state.showForm ?
                <form className="form-style"
                     onSubmit={this.addPost}
-                    autocomplete="nope">
+                    autoComplete="nope">
                     <input required
                          type="text"
                          name="formTitle"
@@ -104,7 +104,7 @@ class BoardPage extends Component{
                          type="text"
                          name="formText"
                          placeholder="Text"
-                         wrap
+                         wrap="true"
                          value={this.state.formText}
                          onChange={this.handleChange}>
                     </textarea>
