@@ -61,7 +61,7 @@ class App extends Component {
                ];
           return (
                <div>
-                    <Navbar className="navbar--color" brand="MBrace" right>
+                    <Navbar fixed className="navbar--color" brand="MBrace" right>
                          <div className="nav-wrapper">
                               <ul>
                                    <li key="home"><Link to='/'>Home</Link></li>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Button} from 'react-materialize';
+import {Link} from 'react-router-dom';
 import PostCard from './PostCard';
 
 const axios = require('axios');
@@ -113,6 +114,7 @@ class BoardPage extends Component{
                     style={{display: this.props.loggedInId ? 'inline' : 'none'}}>New Post</Button>
           return (
                <div>
+                    <Link className="return-button" to={'/'}><Button>Back</Button></Link>
                     <h1 className="heading">{this.state.name}</h1>
                     <p className="caption">Welcome. Please feel free to learn and discuss.</p>
                     {form}

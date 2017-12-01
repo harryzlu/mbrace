@@ -5,7 +5,7 @@ body {
   background: url("/bg.jpg") no-repeat center fixed;
   font-family: "Oxygen", sans-serif;
   font-size: 16px;
-  color: #383E47;
+  color: #4c5d78;
   text-align: center;
   z-index: 0; }
 
@@ -30,24 +30,24 @@ nav {
   background-color: rgba(232, 241, 252, 0.7); }
   nav ul a {
     font-weight: bold;
-    color: #3669D4; }
+    color: #6675ac; }
     nav ul a:hover {
-      color: #383E47; }
+      color: #4c5d78; }
   nav .brand-logo {
     left: 1rem;
-    color: #3669D4;
+    color: #6675ac;
     font-weight: bold; }
     nav .brand-logo:hover {
-      color: #383E47;
+      color: #4c5d78;
       transition: color 0.3s ease; }
     @media only screen and (max-width: 992px) {
       nav .brand-logo {
         left: 50%;
         transform: translateX(-50%); } }
   nav .material-icons {
-    color: #3669D4; }
+    color: #6675ac; }
     nav .material-icons:hover {
-      color: #383E47;
+      color: #4c5d78;
       transition: color 0.3s ease; }
 
 .heading {
@@ -59,18 +59,18 @@ nav {
   font-weight: bold; }
 
 a {
-  color: #3669D4;
+  color: #6675ac;
   cursor: pointer; }
   a:hover {
-    color: #5796FF;
+    color: #91b8e3;
     transition: color 0.3s ease; }
 
 .form-style {
   max-width: 55rem;
   padding: 3rem; }
   .form-style input:focus:not([readonly]) {
-    border-bottom: 1px solid #3669D4;
-    box-shadow: 0 1px 0 0 #3669D4; }
+    border-bottom: 1px solid #6675ac;
+    box-shadow: 0 1px 0 0 #6675ac; }
   .form-style .btn {
     margin-top: 1rem; }
 
@@ -80,9 +80,9 @@ a {
   padding: 0 1.2rem;
   border-radius: 0.5rem;
   text-transform: none;
-  background-color: #3669D4; }
+  background-color: #6675ac; }
   .btn:hover, .btn:focus {
-    background-color: #5796FF; }
+    background-color: #91b8e3; }
 
 .side-auto-margin, .pages, .form-style, .caption, .board--container, .post--container .post--card, .post--header, .comment--container .comment--card {
   margin-left: auto;
@@ -96,11 +96,11 @@ a {
   text-align: left; }
 
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
-  color: #3669D4;
+  color: #6675ac;
   text-transform: none;
   margin: 0; }
   .card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating):hover {
-    color: #5796FF;
+    color: #91b8e3;
     transition: color 0.3s ease; }
 
 .modal .modal-footer .form-style {

@@ -300,12 +300,15 @@ class PostPage extends Component{
                          <p>{this.state.text}</p>
                     </Card>
 
+                    <p>{this.state.comments.length} Comments</p>
+
                     <div style={{display: this.props.loggedInId ? 'inline' : 'none'}}>
                          <Button onClick={this.state.following ? this.unfollowPost : this.followPost}>
                               {this.state.following ? "Unfollow" : "Follow"}
                          </Button>
                          {form}
                     </div>
+
                     <div className="comment--container">{commentCards}</div>
                </div>
           )
