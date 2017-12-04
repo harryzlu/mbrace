@@ -2,8 +2,6 @@ const express = require('express'),
      app = express(),
      PORT = process.env.PORT || 8080;
 
-console.log(process.env);
-
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const secretKey = 'bswdftfall2017';
@@ -16,7 +14,6 @@ app.use(express.urlencoded({extended: true}));
 
 const path = require('path');
 
-console.log(path.join(__dirname, 'mbrace_front/build'))
 app.use(express.static(__dirname + '/mbrace_front/build'));
 
 const knex = require('knex')({
