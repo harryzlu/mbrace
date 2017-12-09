@@ -504,6 +504,7 @@ app.get('*', (req, res) => {
      res.sendFile(__dirname + '/mbrace_front/build/index.html');
 });
 
+console.log("about to listen on", PORT);
 app.listen(PORT, () => {
      console.log('server listening on port', PORT);
 });
